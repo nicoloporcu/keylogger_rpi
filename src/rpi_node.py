@@ -1,3 +1,4 @@
+import threading
 import time
 import grovepi
 import numpy as np
@@ -19,9 +20,9 @@ grovepi.pinMode(sound_sensor, "INPUT")
 
 
 if __name__ == '__main__':
-	
-	client = mqtt.Client()
-    client.connect(host="104.183.92.41:", port=11000, keepalive=60)
+    
+    client = mqtt.Client()
+    client.connect(host="tcp://104.183.92.41", port=1883, keepalive=60)
     client.loop_start()
 
 
