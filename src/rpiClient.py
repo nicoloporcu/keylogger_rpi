@@ -2,6 +2,23 @@
 import argparse
 import time
 import rpiTools  
+import grovepi
+import grove_rgb_lcd as lcd
+potentiometer= 1
+adc_ref = 5
+grove_vcc = 5
+full_angle = 300
+word_list = []
+
+def lcd_update():
+    while True:
+        potentiometer_read = grovepi.analogRead(potentiometer)
+        voltage = round( (float) (potentiometer_read)* adc_ref /1023, 2)
+        degrees = round(( voltage * full_angle) /grove_vcc, 2)
+        level = int(degrees/full_angle * 5)
+
+        lcd.setText_norefresh(str(level) + " " +  wordlist[level])
+
 
 def takeSecond(elem):
     return elem[1]
@@ -11,6 +28,8 @@ def main():
 	global rpi_client
 	rpi_client= rpiTools.rpiClient(args.u, args.a, args.p)
 
+        thread.start_new_thread ( lcd_update )
+
 	while 1:
 		words = rpi_client.get_top5()
 		json_words = words.json()
@@ -18,7 +37,9 @@ def main():
 		
 		wlist.sort(key = takeSecond, reverse= True)
 		wlist = wlist[:5]
-		time.sleep(60)
+		global word_list
+                wordl_list = wlist
+                time.sleep(60)
 
 
 

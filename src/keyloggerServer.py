@@ -5,7 +5,6 @@ import more_itertools
 import operator
 import argparse
 import json
-import keyloggerManager
 
 words ={}
 
