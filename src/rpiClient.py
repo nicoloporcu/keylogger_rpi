@@ -27,19 +27,16 @@ def takeSecond(elem):
 def main():
 	global rpi_client
 	rpi_client= rpiTools.rpiClient(args.u, args.a, args.p)
-
-        thread.start_new_thread ( lcd_update )
-
+	thread.start_new_thread (lcd_update)
 	while 1:
 		words = rpi_client.get_top5()
 		json_words = words.json()
 		wlist = list(json_words.items())
-		
 		wlist.sort(key = takeSecond, reverse= True)
 		wlist = wlist[:5]
 		global word_list
-                wordl_list = wlist
-                time.sleep(60)
+		word_list = wlist
+		time.sleep(60)
 
 
 
