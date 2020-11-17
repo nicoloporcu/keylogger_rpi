@@ -1,6 +1,7 @@
 # ee250_project
 
 Team Members: Nicolo Porcu
+Demo Link Pt 1: https://youtu.be/r9n7gKncqEw Demo Link Pt 2: https://youtu.be/BcjpgMJGQ88
 
 
 VM dependencies (install these libraries before running):
