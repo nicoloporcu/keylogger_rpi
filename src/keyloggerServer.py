@@ -1,7 +1,6 @@
 from flask import Flask
 from flask import jsonify
 from flask import request
-import more_itertools
 import operator
 import argparse
 import json
@@ -10,15 +9,17 @@ words ={}
 
 app = Flask('RaspberryPi Mailbox Server')
 
+def takeSecond(elem):
+    return elem[1]
 
 
 @app.route("/top5", methods =['GET'])
 def top_five():
-	global words
-	sorted_words = {k: v for k, v in sorted(words.items(), key=lambda item: item[1])}
-	return sorted_words
-
-
+    wlist = list(words.items())
+    wlist.sort(key= takeSecond, reverse = True)
+    if len(wlist) > 5:
+        wlist = wlist[:5]
+    return json.dumps(wlist)
 
 
 
