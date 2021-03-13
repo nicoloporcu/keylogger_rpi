@@ -1,4 +1,4 @@
-# ee250_project
+# keylogger rpi
 
 Team Members: Nicolo Porcu
 Demo Link Pt 1: https://youtu.be/r9n7gKncqEw Demo Link Pt 2: https://youtu.be/BcjpgMJGQ88
